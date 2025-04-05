@@ -1,3 +1,5 @@
+Magic: The Gathering app to track commander game stats between friends.
+
 WIP
 
 App Start ToDo:
@@ -19,6 +21,3 @@ Long Term ToDo:
 -average color placing per player
 -average color placing overll
 -^above with any combination of colors (possible scryfall search? or just make array of colors from scryfall and match?)
-
-
-Magic: The Gathering app to track commander game stats between friends.
