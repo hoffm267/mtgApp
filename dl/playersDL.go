@@ -12,7 +12,7 @@ import (
 )
 
 // CREATE
-func CreatePlayers(players []models.Player) error {
+func CreatePlayers(players []models.Player) ([]int, error) {
 	var query strings.Builder
 
 	query.WriteString(`INSERT INTO players ("Name") VALUES `)
@@ -24,14 +24,25 @@ func CreatePlayers(players []models.Player) error {
 			query.Write([]byte{44, 32})
 		}
 	}
-	query.WriteString(";")
+	query.WriteString(` RETURNING "PlayerID";`)
 
-	_, err := database.Conn.Query(context.Background(), query.String())
+	rows, err := database.Conn.Query(context.Background(), query.String())
 	if err != nil {
-		return err
+		return nil, err
+	}
+	defer rows.Close()
+
+	playerIDs := []int{}
+	for rows.Next() {
+		var playerID int
+		err = rows.Scan(&playerID)
+		if err != nil {
+			return nil, err
+		}
+		playerIDs = append(playerIDs, playerID)
 	}
 
-	return nil
+	return playerIDs, nil
 }
 
 // READ

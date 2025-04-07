@@ -28,6 +28,9 @@ func main() {
 
 	router.GET("/game", controllers.GetAllGames)
 	router.GET("/game/:gameid", controllers.GetGame)
+	router.POST("/game", controllers.CreateGames)
+	router.POST("/game/update", controllers.UpdateGames)
+	router.DELETE("/game", controllers.DeleteGames)
 
 	router.Run("localhost:8080")
 }

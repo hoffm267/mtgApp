@@ -7,17 +7,18 @@ import (
 )
 
 // CREATE
-func CreatePlayers(players []models.Player) error {
+func CreatePlayers(players []models.Player) ([]int, error) {
 	if !checkPlayerData(players) {
-		return errors.New("invalid player data")
+		return nil, errors.New("invalid player data")
 	}
 
-	err := dl.CreatePlayers(players)
+	var playerIDs []int
+	playerIDs, err := dl.CreatePlayers(players)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	return nil
+	return playerIDs, nil
 }
 
 // READ

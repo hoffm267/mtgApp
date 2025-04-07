@@ -14,12 +14,13 @@ import (
 // CREATE
 func CreatePlayers(c *gin.Context) {
 	players := mapPlayers(c)
-	err := bl.CreatePlayers(players)
+	var playerIDs []int
+	playerIDs, err := bl.CreatePlayers(players)
 	if err != nil {
 		c.IndentedJSON(http.StatusBadRequest, err)
 	}
 
-	c.IndentedJSON(http.StatusOK, nil)
+	c.IndentedJSON(http.StatusOK, playerIDs)
 }
 
 // READ
