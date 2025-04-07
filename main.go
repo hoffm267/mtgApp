@@ -22,6 +22,9 @@ func main() {
 
 	router.GET("/player", controllers.GetAllPlayers)
 	router.GET("/player/:playerid", controllers.GetPlayer)
+	router.POST("/player", controllers.CreatePlayers)
+	router.POST("/player/update", controllers.UpdatePlayers)
+	router.DELETE("/player", controllers.DeletePlayers)
 
 	router.GET("/game", controllers.GetAllGames)
 	router.GET("/game/:gameid", controllers.GetGame)
