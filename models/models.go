@@ -21,3 +21,8 @@ type PlayerGame struct {
 	Placing       int    `json:"placing"`
 	CommanderName string `json:"commandername"` //scryfall, maybe foreignkey??
 }
+
+type FullGame struct {
+	PlayerGames []PlayerGame
+	Game        Game
+}

@@ -36,6 +36,7 @@ func main() {
 	router.GET("/playergame/:playerid/:gameid", controllers.GetPlayerGame)
 	router.POST("/playergame", controllers.CreatePlayerGames)
 	router.POST("/playergame/update", controllers.UpdatePlayerGames)
+	router.POST("/playergame/full", controllers.CreateFullGame)
 	router.DELETE("/playergame", controllers.DeletePlayerGames)
 
 	router.Run("localhost:8080")

@@ -23,16 +23,17 @@ func CreatePlayerGames(playerGames []models.PlayerGame) ([][2]int, error) {
 		query.WriteString(strconv.Itoa(playerGames[i].PlayerID))
 		query.WriteString(", ")
 		query.WriteString(strconv.Itoa(playerGames[i].Placing))
-		query.WriteString(", ")
+		query.WriteString(", '")
 		query.WriteString(playerGames[i].CommanderName)
-		query.WriteString(")")
+		query.WriteString("')")
 
 		if i+1 < len(playerGames) {
-			query.WriteString(". ")
+			query.WriteString(", ")
 		}
 	}
-	query.WriteString(` RETURNING "PlayerGameID";`)
-
+	query.WriteString(` RETURNING "PlayerID", "GameID";`)
+	var test = query.String()
+	print(test)
 	rows, err := database.Conn.Query(context.Background(), query.String())
 	if err != nil {
 		return nil, err
