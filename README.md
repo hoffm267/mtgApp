@@ -3,7 +3,8 @@ Magic: The Gathering app to track commander game stats between friends.
 WIP
 
 App Start ToDo:
-CRUD players, games, playergames
+CHECK playergames CRUD
+-Add CreateFullGame (or better name) func that takes playergames - game, and creates new game with that data
 Find following stats using the info from those three classes:
 -player winrate
 -commander winrate per player
