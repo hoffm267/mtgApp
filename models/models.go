@@ -16,8 +16,8 @@ type Player struct {
 }
 
 type PlayerGame struct {
-	GameID    int    `json:"gameid"`   //foreign key   <
-	PlayerID  int    `json:"playerid"` //foreign key < composite primary key
-	Placing   int    `json:"placing"`
-	Commander string `json:"commander"` //scryfall, maybe foreignkey??
+	PlayerID      int    `json:"playerid"`
+	GameID        int    `json:"gameid"`
+	Placing       int    `json:"placing"`
+	CommanderName string `json:"commandername"` //scryfall, maybe foreignkey??
 }
